@@ -17,12 +17,9 @@
 package com.kiwiandroiddev.example.quickreturntoolbar;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewTreeObserver;
 
 /**
  * Demo activity for a quick returning toolbar.
@@ -32,7 +29,6 @@ import android.view.ViewTreeObserver;
  * https://code.google.com/p/romannurik-code/
  */
 public class MainActivity extends FragmentActivity {
-    private QuickReturnHandler mQuickReturnHandler;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +39,8 @@ public class MainActivity extends FragmentActivity {
         toolbar.setSubtitle("Subtitle");
 
         ObservableScrollView mObservableScrollView = (ObservableScrollView) findViewById(R.id.scroll_view);
-        View quickReturnView = toolbar;
         View placeholderView = findViewById(R.id.placeholder);
 
-        mQuickReturnHandler = new QuickReturnHandler(
-                toolbar,
-                placeholderView,
-                mObservableScrollView
-        );
+        QuickReturnHandler.setup(toolbar, placeholderView, mObservableScrollView);
     }
 }
